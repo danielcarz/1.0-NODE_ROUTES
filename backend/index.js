@@ -1,12 +1,18 @@
 import express from 'express';
+import cors from 'cors';
 
 const app = express();
+
+
+app.use( cors( { origin: 'http://localhost:5173' } ) );
 
 //
 app.get( '/user', (req, res) => {
 
-    res.send( 'users' )
+    res.send( {
+        users: []   
+    } );
 } );
 
 
-app.listen( 3006, () => { console.log( 'app run on port 3006' ) } )
+app.listen( 3007, () => { console.log( 'app run on port 3007' ) } )
