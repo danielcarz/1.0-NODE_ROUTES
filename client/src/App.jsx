@@ -15,9 +15,9 @@ function App() {
      <button onClick= { async () => { 
 
         const res = await fetch (`${ URL }/user`);    
-        const resjson = await res.json();
+        const resToJson = await res.json();
 
-        console.log( resjson );
+        console.log( resToJson );
 
       } }> Users </button>
     </>
