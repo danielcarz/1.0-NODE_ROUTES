@@ -8,7 +8,7 @@ const app = express();
 
 app.use( cors( { origin: FRONTED_URL } ) ); 
 
-//
+
 app.get( '/user', (req, res) => { 
 
     res.send( { message: 'hello server' } );
