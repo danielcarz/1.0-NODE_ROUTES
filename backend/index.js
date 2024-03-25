@@ -11,9 +11,7 @@ app.use( cors( { origin: FRONTED_URL } ) );
 //
 app.get( '/user', (req, res) => { 
 
-    res.send( {
-        users: []    
-    } );
+    res.send( 'hello server' );
 } );
 
 
