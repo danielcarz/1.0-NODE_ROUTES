@@ -1,0 +1,1 @@
+VAAP: DEPLOY mern react
