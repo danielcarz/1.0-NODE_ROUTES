@@ -12,7 +12,7 @@ function App() {
 
      <button onClick= { async () => { 
 
-        const res = await fetch (`${ import.meta.env.VITE_BACKEND_URL}/user`);   
+        const res = await fetch (`${ import.meta.env.VITE_BACKEND_URL}`);    
         const resjson = await res.json();
 
         console.log( resjson );
