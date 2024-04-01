@@ -1,7 +1,7 @@
-VAAP: DEPLOY mern react
+CODE TESTING: code for practice routes in node with express 
 
 DEPLOY
 
-fronted: https://testingexpressapp.onrender.com/
+fronted:
 
-backend: https://backendmerns-5bsf.onrender.com/user
+backend: 
