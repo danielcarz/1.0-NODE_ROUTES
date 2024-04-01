@@ -15,4 +15,4 @@ app.get( '/user', (req, res) => {
 } );
 
 
-app.listen( PORT, () => { console.log( 'app run on port 3007' ) } )
+app.listen( PORT, () => { console.log( `server run on port ${PORT}` ) } )
