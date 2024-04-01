@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'; 
+
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -6,7 +8,7 @@ import './App.css'
 const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3007";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [name, setNames] = useState('');
 
   useEffect( () => {
 
@@ -25,6 +27,18 @@ function App() {
 
   }
 
+  const sendUser = (e ) => {
+
+    e.preventDefault();
+
+    axios.post( `${ URL }/users`, { name } )
+      .then( res => {
+        //setNames( [ ...names, res.data ] )
+        console.log(res.data);
+      } )
+      .catch( err => console.error(err) )
+  }
+
 
   
 
@@ -41,8 +55,13 @@ function App() {
         console.log( resToJson );
 
       } }> Users </button> */}
-
+ 
       <button > Create a GET request </button>
+
+      <form onSubmit={ sendUser }>
+        <input type='text' placeholder='name' value={name} onChange={ (e) => setNames(( e.target.value ))} ></input>
+        <button type='submit'>Crear una solicitud Post</button>
+      </form>
     </>
   )
 }

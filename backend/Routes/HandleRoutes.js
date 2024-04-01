@@ -9,7 +9,7 @@ const { Users, sendUser, deleteUser } = require('../Controllers/users.js')
 //get user
 router.get('/users', Users);
 
-router.post('/users', Users);
+router.post('/users', sendUser);
 
 
 module.exports = router;
