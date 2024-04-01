@@ -2,11 +2,14 @@ const express = require('express');
 
 const router = express.Router();
 
+//Routes
+const { Users, sendUser, deleteUser } = require('../Controllers/users.js')
 
 
-router.get('/', (req, res) => {
-    res.send('Hello, world!');
-  });
+//get user
+router.get('/users', Users);
+
+router.post('/users', Users);
 
 
 module.exports = router;
