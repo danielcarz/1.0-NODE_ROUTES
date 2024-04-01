@@ -1,18 +1,15 @@
-import express from 'express';
-import cors from 'cors';
-
-import { FRONTED_URL, PORT } from './config.js';
+const express = require('express');
+const cors = require('cors');
+const { FRONTED_URL, PORT } = require('./config.js');
+const HandleRoutes = require('./Routes/HandleRoutes.js');
 
 const app = express();
 
+app.use(cors({ origin: FRONTED_URL }));
 
-app.use( cors( { origin: FRONTED_URL } ) ); 
+// Utiliza el manejador de rutas
+app.use('/', HandleRoutes);
 
-
-app.get( '/user', (req, res) => { 
-
-    res.send( { message: 'hello server' } );
-} );
-
-
-app.listen( PORT, () => { console.log( `server run on port ${PORT}` ) } )
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
