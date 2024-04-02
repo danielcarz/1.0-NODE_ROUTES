@@ -9,9 +9,19 @@ const Users = ( req, res ) => {
 
 const sendUser = ( req, res ) => {
 
-   
 
-    res.json( { mjs: 'object send user' } ); 
+   const { name, email, number } = req.body;
+
+   //validator
+   if(name.length <= 3 ){
+
+    return res.status(400).json({
+        of: false,
+        mjs: "the name must have more than 4 letters"
+    })
+   }
+
+   return res.json( { ok: true, msj: "send",  res: req.body } ); 
 }
 
 const deleteUser = ( req, res ) => {

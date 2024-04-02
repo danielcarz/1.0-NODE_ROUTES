@@ -7,7 +7,11 @@ const HandleRoutes = require('./Routes/HandleRoutes.js');
 
 const app = express();
 
+//cors
 app.use(cors({ origin: FRONTED_URL }));
+
+//parse
+app.use(express.json());
 
 // Utiliza el manejador de rutas
 app.use('/', HandleRoutes);
