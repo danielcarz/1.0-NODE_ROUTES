@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'; 
 
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+
+import { ContexProvider } from '../src/Hooks/ContexProvider.jsx';
 
 const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3007";
 
-function App() {
-  const [name, setNames] = useState('');
+//route handler
+import { RoutesHandler } from './Routes/RoutesHandler.jsx';
 
-  useEffect( () => {
+function App() {
+  //const [name, setNames] = useState('');
+
+ /*  useEffect( () => {
 
     createRequest();
 
@@ -32,37 +36,34 @@ function App() {
     e.preventDefault();
 
     axios.post( `${ URL }/users`, { name } )
+
       .then( res => {
+
         //setNames( [ ...names, res.data ] )
         console.log(res.data);
       } )
       .catch( err => console.error(err) )
   }
-
+ */
 
   
 
   return (
-    <>
-     <h1>Aplication to Practice Routing with Express</h1>
+    <ContexProvider>
+
+     {/*  <h1>Aplication to Practice Routing with Express</h1> */}
+
+      <RoutesHandler></RoutesHandler>
       
 
-    {/*  <button onClick= { async () => { 
-
-        const res = await fetch (`${ URL }/user`);    
-        const resToJson = await res.json();
-
-        console.log( resToJson );
-
-      } }> Users </button> */}
  
-      <button > Create a GET request </button>
+      {/* <button > Create a HTTP request </button>
 
       <form onSubmit={ sendUser }>
         <input type='text' placeholder='name' value={name} onChange={ (e) => setNames(( e.target.value ))} ></input>
         <button type='submit'>Crear una solicitud Post</button>
-      </form>
-    </>
+      </form> */}
+    </ContexProvider>
   )
 }
 
