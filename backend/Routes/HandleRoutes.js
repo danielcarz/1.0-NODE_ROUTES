@@ -5,25 +5,21 @@ const { check } = require('express-validator');
 const router = express.Router();
 
 //Routes
-const { showUsers,  createUser, deleteUser } = require('../Controllers/auth.js')
+const { showUsers,  createUser, loginUser, deleteUser } = require('../Controllers/auth.js')
 
 
-//get user
+//get users
 router.get(
 
     //route
     '/users', 
     
-    //middleware
-   /*  check('name').notEmpty().withMessage('El nombre es requerido'), */
-   /*  check('name', 'El nombre debe ser obligatorio').not().isEmpty() , */
-
-
-    //controller
+   //controller
     showUsers
 
 );
 
+//create user
 router.post(
     
     //route
@@ -33,12 +29,24 @@ router.post(
     check('email').isEmail().withMessage('El correo debe ser requerido'),
     check('password').isLength( { min: 6 } ).withMessage('la contraseña  debe tener al menos 6 caracteres'),
 
-   
-    /*  check('name', 'El nombre debe ser obligatorio').not().isEmpty() , */
 
     //controller
     createUser
 );
+
+//login user
+router.post(
+
+    //route
+    '/login',
+
+    //middleware
+    check( 'name' ).notEmpty().withMessage('Se debe ingersar el usuario'),
+    check('password').notEmpty().withMessage('Falta escribir la contraseña'),
+
+    //controller
+    loginUser
+)
 
 
 module.exports = router;
