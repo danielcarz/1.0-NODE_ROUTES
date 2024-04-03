@@ -13,9 +13,12 @@ app.use(cors({ origin: FRONTED_URL }));
 //parse
 app.use(express.json());
 
-// Utiliza el manejador de rutas
+// routes handler
 app.use('/', HandleRoutes);
 
+
+
+//listener
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
