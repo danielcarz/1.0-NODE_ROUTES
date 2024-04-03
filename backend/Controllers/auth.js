@@ -12,27 +12,8 @@ const showUsers = ( req, res ) => {
 //create user
 const createUser = ( req, res ) => {
 
-
    const { name, email, password } = req.body;
- 
-   
-   //validation errors
 
-   const errors = validationResult( req );
-   console.log( errors )
-
-   if( !errors.isEmpty() ){
-
-    return res.status(400).json( { 
-
-        ok: false,
-        msj: errors.mapped()
-
-     } )
-   }
-   
-
-   
   return res.status(201).json( { ok: true, name , email, password } )
     //res: req.body  
 }
@@ -41,18 +22,6 @@ const createUser = ( req, res ) => {
 const loginUser = ( req, res) => {
 
     const { name, password } = req.body
-
-    //validation errors
-    const errors = validationResult( req );
-
-    if( !errors.isEmpty() ){
-
-        return res.status(400).json( {
-
-            ok:false,
-            mjs: errors.mapped()
-        } )
-    }
 
 
     return res.status(201).json( { ok: true, mjs: "user logged" } )
