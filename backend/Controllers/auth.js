@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 //const { validationResult } = require('express-validator')
 
 const userSchema = require('../models/modelUser.js');
@@ -23,15 +24,24 @@ const createUser = async ( req, res ) => {
         if( newUser ){
 
                 return res.status(400).json( {
-
+ 
                     ok: false,
 
                     mjs: 'el correo ya existe'
                 } )
         }
-       
+
+        
+        
+        
         //intance: save user to database 
         newUser = await new userSchema( req.body  );
+        
+        
+        //password encripted
+        const salt = bcrypt.genSaltSync();
+        newUser.password = bcrypt.hashSync( password, salt );
+
         await newUser.save();
        
         
