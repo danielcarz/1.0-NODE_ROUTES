@@ -49,7 +49,7 @@ router.post(
     '/login',
 
     //validation fields
-    check( 'name' ).notEmpty().withMessage('Se debe ingersar el usuario'),
+    check( 'email' ).notEmpty().withMessage('debe ingresar el correo'),
     check('password').notEmpty().withMessage('Falta escribir la contraseña'),
 
     //validator Error

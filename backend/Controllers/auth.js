@@ -18,7 +18,9 @@ const createUser = async ( req, res ) => {
 
    const { name, email, password } = req.body;
 
-   try { 
+   try {
+        
+        //validate user
         let newUser = await  userSchema.findOne( { email } );
 
         if( newUser ){
@@ -27,7 +29,7 @@ const createUser = async ( req, res ) => {
  
                     ok: false,
 
-                    mjs: 'el correo ya existe'
+                    mjs: 'el usuario ya existe'
                 } )
         }
 
@@ -59,12 +61,49 @@ const createUser = async ( req, res ) => {
 }
 
 //login user
-const loginUser = ( req, res) => {
+const loginUser = async ( req, res) => {
 
-    const { name, password } = req.body
+    const { name, password, email } = req.body;
+
+    try {
+
+        //validate user
+        let newUser = await  userSchema.findOne( { email } );
+
+        if ( !newUser ){
+
+            return res.status(400).json( {
+ 
+                ok: false,
+
+                mjs: 'usuario o contraseña incorrecto'
+            } );
+
+        };
+
+        //validate password
+        const isValidPassword = bcrypt.compareSync( password, newUser.password );
+
+        if( !isValidPassword ){
+
+            return res.status(400).json( {
+                ok:false,
+
+                mjs: 'contraseña incorrecta'
+            } )
+        }
+
+        
+        return res.status(201).json( { ok: true, mjs: "user logged" } )
+
+    } catch (error) {
+
+        console.error('Error al guardar en la base de datos:', error);
+        return res.status(500).json({ error: 'Error al guardar en la base de datos' });
+
+    }
 
 
-    return res.status(201).json( { ok: true, mjs: "user logged" } )
 }
 
 //delete user
