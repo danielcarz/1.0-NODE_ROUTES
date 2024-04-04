@@ -1,5 +1,8 @@
 const express = require('express');
-const { validationResult } = require('express-validator')
+const mongoose = require('mongoose');
+//const { validationResult } = require('express-validator')
+
+const userSchema = require('../models/modelUser.js');
 
 const users = [];
 console.log(users)
@@ -10,12 +13,39 @@ const showUsers = ( req, res ) => {
 }
 
 //create user
-const createUser = ( req, res ) => {
+const createUser = async ( req, res ) => { 
 
    const { name, email, password } = req.body;
 
-  return res.status(201).json( { ok: true, name , email, password } )
-    //res: req.body  
+   try { 
+        let newUser = await  userSchema.findOne( { email } );
+
+        if( newUser ){
+
+                return res.status(400).json( {
+
+                    ok: false,
+
+                    mjs: 'el correo ya existe'
+                } )
+        }
+       
+        //intance: save user to database 
+        newUser = await new userSchema( req.body  );
+        await newUser.save();
+       
+        
+        
+        return res.status(201).json( { ok: true, body: newUser.id, userName: newUser.name } )
+            
+
+   } catch (error) {
+
+    console.error('Error al guardar en la base de datos:', error);
+    return res.status(500).json({ error: 'Error al guardar en la base de datos' });
+    
+   }
+ 
 }
 
 //login user
