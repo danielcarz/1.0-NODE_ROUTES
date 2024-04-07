@@ -1,3 +1,5 @@
+//ENVIORMENT VARIABLES
+
 const express = require('express');
 
 //fronted url

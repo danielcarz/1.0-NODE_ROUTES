@@ -1,12 +1,16 @@
+//REQUIREMENTS
 const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
 
+const cors = require('cors'); //cors
 
-const { FRONTED_URL, PORT } = require('./config.js');
+require('dotenv').config(); // config enviorment variables file
+const { FRONTED_URL, PORT } = require('./config.js'); // enviorment variables
 
 const HandleRoutes = require('./Routes/HandleRoutes.js'); //routes
-const { db_conection } = require( './Database/config.js' ); // database
+
+const { db_conection } = require( './Database/DatabaseConfig.js' ); // database 
+
+
 
 const app = express();
 

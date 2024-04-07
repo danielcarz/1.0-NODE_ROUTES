@@ -1,12 +1,14 @@
+//REQUIREMENTS
 const express = require('express');
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-//const { validationResult } = require('express-validator')
+
+const mongoose = require('mongoose'); //mongoose
+
+const bcrypt = require('bcrypt');// bcrypt encript password
+
+
 
 const userSchema = require('../models/modelUser.js');
 
-const users = [];
-console.log(users)
 
 //show users
 const showUsers = ( req, res ) => {
@@ -53,8 +55,8 @@ const createUser = async ( req, res ) => {
 
    } catch (error) {
 
-    console.error('Error al guardar en la base de datos:', error);
-    return res.status(500).json({ error: 'Error al guardar en la base de datos' });
+        console.error('Error al guardar en la base de datos:', error);
+        return res.status(500).json({ error: 'Error al guardar en la base de datos' });
     
    }
  

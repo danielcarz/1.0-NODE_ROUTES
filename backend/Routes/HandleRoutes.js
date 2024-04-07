@@ -1,11 +1,15 @@
+//REQUIREMENTS 
 const express = require('express');
 
-//midlewares
-const { validationField } = require('../middlewares/1.0-ValidationField.js');
+const router = express.Router(); // router of express
 
-const { check } = require('express-validator');
 
-const router = express.Router();
+//MIDDLEWARES
+const { check } = require('express-validator'); //check method
+
+const { validationField } = require('../middlewares/1.0-ValidationField.js'); // custom middleware
+
+
 
 //Routes
 const { showUsers,  createUser, loginUser, deleteUser } = require('../Controllers/auth.js')
@@ -29,7 +33,7 @@ router.post(
     //route
     '/users', 
 
-    //validation fields
+    //validation fields middleware
     check('name').notEmpty().withMessage('El nombre debe ser requerido'),
     check('email').isEmail().withMessage('El correo debe ser requerido'),
     check('password').notEmpty().withMessage('falta crear la contraseña'),
