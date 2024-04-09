@@ -51,7 +51,7 @@ const createUser = async ( req, res ) => {
         //save user 
         await newUser.save();
 
-        //JWT
+        // generate JWT
         const token =  await generateJWT( newUser.id, newUser.name );
 
        
@@ -63,6 +63,7 @@ const createUser = async ( req, res ) => {
    } catch (error) {
 
         console.error('Error al guardar en la base de datos:', error);
+
         return res.status(500).json({ error: 'Error al guardar en la base de datos' });
     
    }
@@ -100,13 +101,13 @@ const loginUser = async ( req, res) => {
 
                 mjs: 'contraseña incorrecta'
             } )
-        }
+        };
 
         //generate JWT
         const token = await generateJWT( newUser.id, newUser.name );
 
         
-        return res.status(201).json( { ok: true, mjs: "user logged", token } )
+        return res.status(201).json( { ok: true, mjs: "user logged", token } );
 
     } catch (error) {
 
@@ -123,11 +124,27 @@ const deleteUser = ( req, res ) => {
     res.json( { mjs: 'object deleteUser' })
 }
 
+//revalidate token
+const revalidateToken = async (req, res) => { 
+
+    const { uui, name } = req;
+
+
+    //generate JWT
+    const token = await generateJWT( uui, name );
+
+    //console.log( req.id )
+    res.json( { ok:true,  mjs: token } );
+
+} 
+
 module.exports = {
 
     showUsers,
     createUser,
     loginUser,
-    deleteUser
+    deleteUser,
+
+    revalidateToken,
 
 }

@@ -9,10 +9,10 @@ const { check } = require('express-validator'); //check method
 
 const { validationField } = require('../middlewares/1.0-ValidationField.js'); // custom middleware
 
-
+const { validateJWT } = require('../middlewares/2.0-validateJWT.js');
 
 //Routes
-const { showUsers,  createUser, loginUser, deleteUser } = require('../Controllers/auth.js')
+const { showUsers,  createUser, loginUser, deleteUser, revalidateToken } = require('../Controllers/auth.js')
 
 //HTTP METHODS
 
@@ -63,6 +63,9 @@ router.post(
     //controller
     loginUser
 )
+
+//revalitade token
+router.get('/renew', validateJWT ,revalidateToken ); 
 
 
 module.exports = router;

@@ -37,7 +37,7 @@ const generateJWT = ( uui, name ) => {
         );
 
     } ); 
-
+ 
 }
 
 module.exports = { 
