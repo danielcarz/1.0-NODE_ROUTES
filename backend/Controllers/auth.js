@@ -5,6 +5,8 @@ const mongoose = require('mongoose'); //mongoose
 
 const bcrypt = require('bcrypt');// bcrypt encript password
 
+const { generateJWT } = require('../Helpers/jwt.js'); // jwt generator
+
 
 
 const userSchema = require('../models/modelUser.js');
@@ -46,11 +48,16 @@ const createUser = async ( req, res ) => {
         const salt = bcrypt.genSaltSync();
         newUser.password = bcrypt.hashSync( password, salt );
 
+        //save user 
         await newUser.save();
+
+        //JWT
+        const token =  await generateJWT( newUser.id, newUser.name );
+
        
+         
         
-        
-        return res.status(201).json( { ok: true, body: newUser.id, userName: newUser.name } )
+        return res.status(201).json( { ok: true, body: newUser._id, userName: newUser.name, token } )
             
 
    } catch (error) {
@@ -95,8 +102,11 @@ const loginUser = async ( req, res) => {
             } )
         }
 
+        //generate JWT
+        const token = await generateJWT( newUser.id, newUser.name );
+
         
-        return res.status(201).json( { ok: true, mjs: "user logged" } )
+        return res.status(201).json( { ok: true, mjs: "user logged", token } )
 
     } catch (error) {
 
