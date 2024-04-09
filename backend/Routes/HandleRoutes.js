@@ -11,8 +11,10 @@ const { validationField } = require('../middlewares/1.0-ValidationField.js'); //
 
 const { validateJWT } = require('../middlewares/2.0-validateJWT.js');
 
-//Routes
+//controllers (login)
 const { showUsers,  createUser, loginUser, deleteUser, revalidateToken } = require('../Controllers/auth.js')
+
+
 
 //HTTP METHODS
 
@@ -69,3 +71,4 @@ router.get('/renew', validateJWT ,revalidateToken );
 
 
 module.exports = router;
+ 

@@ -6,8 +6,11 @@ const cors = require('cors'); //cors
 require('dotenv').config(); // config enviorment variables file
 const { FRONTED_URL, PORT } = require('./config.js'); // enviorment variables
 
-const HandleRoutes = require('./Routes/HandleRoutes.js'); //routes
 
+//ROUTES
+const HandleRoutes = require('./Routes/HandleRoutes.js'); //authentication
+const EventsRoutes = require('./Routes/Events.js'); //events
+ 
 const { db_conection } = require( './Database/DatabaseConfig.js' ); // database 
 
 
@@ -24,7 +27,8 @@ app.use(cors({ origin: FRONTED_URL }));
 app.use(express.json());
 
 // routes handler
-app.use('/', HandleRoutes);
+app.use('/', HandleRoutes );
+app.use('/events', EventsRoutes );
 
 
 
