@@ -1,8 +1,8 @@
 //REQUIREMENTS
 const express = require('express');
 
-
-const eventTest = ( req, res ) => {
+//EVENTS
+const showEvents = ( req, res ) => {
 
     const { uid, name } = req;
     
@@ -19,6 +19,29 @@ const eventTest = ( req, res ) => {
     )
 
 };
+
+const  createEvent  = ( req, res ) => {
+
+    res.json( { mjs: 'createEvents' } );
+}
+
+const foundEventByID = ( req, res ) => {
+
+    res.json( { mjs: 'found by id' } );
+}
+
+const deleteEventByID = ( req, res ) => {
+
+    res.json( { mjs: 'deleteEvents' } );
+}
+
+const delete_ALL_Events = ( req, res ) => {
+
+    res.json( { mjs: 'createEvents' } );
+}
+
+
+
 
 module.exports = {
 

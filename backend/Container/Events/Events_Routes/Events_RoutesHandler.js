@@ -15,7 +15,22 @@ const { revalidateToken } = require('../../Auth/Auth_Controllers/AuthControllers
 
 router.get('/renew', validateJWT, revalidateToken );
 
-router.get('/', validateJWT, eventTest );
+// get events
+router.get('/', validateJWT, showEvents );
+
+//create events
+router.post('/', validateJWT, createEvent );
+
+//found by id
+router.get('/:id', validateJWT, foundEventByID);
+
+//delete event by id
+router.delete('/:id', validateJWT, deleteEventByID);
+
+//delete all events
+router.delete('/', validateJWT, delete_ALL_Events);
+
+
 
 
 
