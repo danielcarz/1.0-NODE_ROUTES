@@ -5,11 +5,11 @@ const mongoose = require('mongoose'); //mongoose
 
 const bcrypt = require('bcrypt');// bcrypt encript password
 
-const { generateJWT } = require('../Helpers/jwt.js'); // jwt generator
+const { generateJWT } = require('../../../Helpers/jwt.js'); // jwt generator
 
 
 
-const userSchema = require('../models/modelUser.js');
+const userSchema = require('../../../models/modelUser.js');
 
 
 //show users
