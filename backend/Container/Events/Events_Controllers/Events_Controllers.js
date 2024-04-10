@@ -11,9 +11,8 @@ const eventTest = ( req, res ) => {
         {
             
             ok: true, 
-            name: name,
-            uid: uid,
-            mjs: "from events" 
+            nameUser: name,
+            mjs: "Default event" 
     
          } 
     

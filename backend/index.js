@@ -4,7 +4,10 @@ const express = require('express');
 const cors = require('cors'); //cors
 
 require('dotenv').config(); // config enviorment variables file
-const { FRONTED_URL, PORT } = require('./config.js'); // enviorment variables
+//const { FRONTED_URL, PORT } = require('./config.js'); // enviorment variables
+
+const PORT = process.env.PORT;
+const FRONTED_URL = process.env.FRONTED_URL;
 
 
 //ROUTES

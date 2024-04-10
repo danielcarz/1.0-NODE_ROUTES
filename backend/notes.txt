@@ -1,2 +1,0 @@
-db user: db_user_one
-pass: E9ewP57AHDmz1oyd
