@@ -7,6 +7,31 @@ for input validation using the express-validator package. Additionally, the appl
 JSON Web Tokens (JWT) for user authentication. 
 
 
+## Caracteristicas
+
+*
+* 
+* 
+* Responsive desing for use on any device
+
+## Technologies used
+
+### Frontend
+    * React Vainilla
+    * vite
+    * Sass
+    * Bootstrap
+    * Javascript
+
+### Backend
+    * Node
+    * express
+    * JWT
+    * MongoDB
+    * ODM: Mongoose
+
+
+
 
 DEPLOY
 
