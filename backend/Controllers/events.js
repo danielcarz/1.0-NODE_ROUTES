@@ -1,12 +1,21 @@
 //REQUIREMENTS
 const express = require('express');
 
+
 const eventTest = ( req, res ) => {
 
-    res.json( {
-        
-        ok: true, 
-        mjs: 'from event'} 
+    const { uid, name } = req;
+    
+
+    res.json( 
+        {
+            
+            ok: true, 
+            name: name,
+            uid: uid,
+            mjs: "from events" 
+    
+         } 
     
     )
 
