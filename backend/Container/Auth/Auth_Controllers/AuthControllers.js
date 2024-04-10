@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');// bcrypt encript password
 const { generateJWT } = require('../../../Helpers/jwt.js'); // jwt generator
 
 
-
+//model user
 const userSchema = require('../../../models/modelUser.js');
 
 
@@ -31,7 +31,7 @@ const createUser = async ( req, res ) => {
 
                 return res.status(400).json( {
  
-                    ok: false,
+                    ok: false, 
 
                     mjs: 'el usuario ya existe'
                 } )
@@ -129,12 +129,16 @@ const revalidateToken = async (req, res) => {
 
     const { uui, name } = req;
 
-
+ 
     //generate JWT
     const token = await generateJWT( uui, name );
 
+    // Set the Content-Type header only once (before sending data)
+    //res.setHeader('Content-Type', 'application/json'); // Assuming JSON response
+
+
     //console.log( req.id )
-    res.json( { ok:true,  mjs: token } );
+    res.json( { ok:true,  token, mjs: req.body } );
 
 } 
 

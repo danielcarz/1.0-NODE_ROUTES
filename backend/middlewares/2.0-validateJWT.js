@@ -11,7 +11,7 @@ const validateJWT = (req, res, next) => {
     //validate if a token has been introduced
     if( !token ){
         res.status(401).json( { ok: false, mjs: "falta ingresar el token" } )
-    }
+    } 
 
     try {
 

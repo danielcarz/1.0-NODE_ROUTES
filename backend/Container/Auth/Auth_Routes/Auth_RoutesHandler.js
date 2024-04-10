@@ -52,7 +52,7 @@ router.post(
 //login user
 router.post(
 
-    //route
+    //route 
     '/login',
 
     //validation fields
@@ -67,7 +67,7 @@ router.post(
 )
 
 //revalitade token
-router.get('/renew', validateJWT ,revalidateToken ); 
+router.get('/renew',revalidateToken ); 
 
 
 module.exports = router;
