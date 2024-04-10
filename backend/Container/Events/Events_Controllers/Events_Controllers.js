@@ -6,6 +6,8 @@ const showEvents = ( req, res ) => {
 
     const { uid, name } = req;
     
+    
+    
 
     res.json( 
         {
@@ -18,9 +20,14 @@ const showEvents = ( req, res ) => {
     
     )
 
+
 };
 
 const  createEvent  = ( req, res ) => {
+
+    //validation 
+    console.log( 'req.body is', req.body );
+    
 
     res.json( { mjs: 'createEvents' } );
 }
@@ -37,7 +44,7 @@ const deleteEventByID = ( req, res ) => {
 
 const delete_ALL_Events = ( req, res ) => {
 
-    res.json( { mjs: 'createEvents' } );
+    res.json( { mjs: 'Dellete all Events' } );
 }
 
 
@@ -45,5 +52,14 @@ const delete_ALL_Events = ( req, res ) => {
 
 module.exports = {
 
-    eventTest,
+
+    showEvents,
+
+    createEvent,
+
+    foundEventByID,
+
+    deleteEventByID,
+
+    delete_ALL_Events,
 }

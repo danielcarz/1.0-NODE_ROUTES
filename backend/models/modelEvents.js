@@ -3,12 +3,12 @@ const { Schema, model } = require('mongoose');
 //schema
 const EventsSchema = Schema( {
 
-    name:{
+    title:{
         type: String,
         required: true
     },
 
-    email: {
+    note: {
 
         type: String,
         required: true,
@@ -16,8 +16,19 @@ const EventsSchema = Schema( {
         
     },
 
-    password: { 
-        type: String,
+    start: { 
+        type: Date,
+        required: true
+    },
+
+    end: { 
+        type: Date,
+        required: true,
+    },
+
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
         required: true
     }
 

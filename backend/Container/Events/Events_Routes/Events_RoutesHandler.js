@@ -7,28 +7,29 @@ const router = express.Router(); // router of express
 const { validateJWT } = require('../../../middlewares/2.0-validateJWT.js');
 
 //controllers
-const { eventTest } = require('../Events_Controllers/Events_Controllers.js');
+const { showEvents, createEvent, foundEventByID, deleteEventByID, delete_ALL_Events } = require('../Events_Controllers/Events_Controllers.js');
 const { revalidateToken } = require('../../Auth/Auth_Controllers/AuthControllers.js'); //must be modified
 
  
- 
+//middleware for aply in all methods
+router.use(revalidateToken)
 
-router.get('/renew', validateJWT, revalidateToken );
+router.get('/renew', revalidateToken ); 
 
 // get events
-router.get('/', validateJWT, showEvents );
+router.get('/', showEvents );
 
 //create events
-router.post('/', validateJWT, createEvent );
+router.post('/', createEvent );
 
 //found by id
-router.get('/:id', validateJWT, foundEventByID);
+router.get('/:id', foundEventByID);
 
 //delete event by id
-router.delete('/:id', validateJWT, deleteEventByID);
+router.delete('/:id', deleteEventByID);
 
 //delete all events
-router.delete('/', validateJWT, delete_ALL_Events);
+router.delete('/', delete_ALL_Events);
 
 
 
