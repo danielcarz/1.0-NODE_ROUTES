@@ -8,18 +8,19 @@ const validateJWT = (req, res, next) => {
 
     
 
-    //validate if a token has been introduced
+    //validate if a token has been introduced  
     if( !token ){
-        res.status(401).json( { ok: false, mjs: "falta ingresar el token" } )
-    } 
 
-    try {
+        res.status(401).json( { ok: false, mjs: "falta ingresar el token" } ); 
+    } 
+ 
+    try { 
 
         const payload = jwt.verify( token, process.env.SECRET_JWT_KEY );
 
         console.log( payload );
 
-        req.uid = payload.uui;
+        req.uid = payload.uui; 
         req.name = payload.name;
 
     } catch (error) {

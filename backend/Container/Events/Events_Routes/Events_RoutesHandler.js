@@ -9,7 +9,7 @@ const { check } = require('express-validator'); //check method
 const { validationField } = require('../../../middlewares/1.0-ValidationField.js');
 
 //controllers
-const { showEvents, createEvent, foundEventByID, deleteEventByID, delete_ALL_Events } = require('../Events_Controllers/Events_Controllers.js');
+const { showEvents, createEvent, foundEventByID, updateEventByID, deleteEventByID, delete_ALL_Events } = require('../Events_Controllers/Events_Controllers.js');
 const { revalidateToken } = require('../../Auth/Auth_Controllers/AuthControllers.js'); //must be modified
  
 //middleware for aply in all methods
@@ -41,10 +41,16 @@ router.post(
 
     //controller
     createEvent
-);
+); 
+
+
  
 //found by id
 router.get('/:id', foundEventByID);
+
+//update by id
+router.post('/:id', updateEventByID);
+
 
 //delete event by id
 router.delete('/:id', deleteEventByID);

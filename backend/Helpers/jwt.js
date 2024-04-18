@@ -19,7 +19,7 @@ const generateJWT = ( uui, name ) => {
                     process.env.SECRET_JWT_KEY, 
 
                     //time of expiration
-                    { expiresIn: '40s' },
+                    { expiresIn: '1h' },
 
                     //jwt sign callback response
                     ( err, token ) => {

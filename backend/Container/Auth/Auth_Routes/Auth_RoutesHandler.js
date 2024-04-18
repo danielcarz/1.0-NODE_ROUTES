@@ -3,16 +3,16 @@ const express = require('express');
 
 const router = express.Router(); // router of express
 
+const { showUsers,  createUser, loginUser, deleteUser, revalidateToken } 
+    = require('../Auth_Controllers/AuthControllers.js'); //controllers users
 
-//MIDDLEWARES
+
+// REQUIRE MIDDLEWARES
 const { check } = require('express-validator'); //check method
 
 const { validationField } = require('../../../middlewares/1.0-ValidationField.js'); // custom middleware
 
-const { validateJWT } = require('../../../middlewares/2.0-validateJWT.js');
-
-//controllers (login)
-const { showUsers,  createUser, loginUser, deleteUser, revalidateToken } = require('../Auth_Controllers/AuthControllers.js');
+const { validateJWT } = require('../../../middlewares/2.0-validateJWT.js'); // vaidate middleware
 
 
 
@@ -41,7 +41,7 @@ router.post(
     check('password').notEmpty().withMessage('falta crear la contraseña'),
     check('password').isLength( { min: 6 } ).withMessage('la contraseña  debe tener al menos 6 caracteres'),
 
-    //validator Error
+    //custom middleware: validator Error
     validationField,
 
     //controller
@@ -59,7 +59,7 @@ router.post(
     check( 'email' ).notEmpty().withMessage('debe ingresar el correo'),
     check('password').notEmpty().withMessage('Falta escribir la contraseña'),
 
-    //validator Error
+    // custom middleware: validator Error
     validationField,
 
     //controller
