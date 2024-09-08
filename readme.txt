@@ -1,40 +1,36 @@
-ROUTES WITH EXPRESS
+# Routes with Express
 
-The provided code sets up a basic Express application with routes for user authentication 
-(creating users, logging in, deleting users) using a MongoDB database with Mongoose for schema
- modeling and bcrypt for password encryption. It also includes basic error handling and middleware
-for input validation using the express-validator package. Additionally, the application uses
-JSON Web Tokens (JWT) for user authentication. 
+The provided code sets up a basic Express application with routes for user authentication (creating users, logging in, deleting users) using a MongoDB database with Mongoose for schema modeling and bcrypt for password encryption. It also includes basic error handling and middleware for input validation using the `express-validator` package. Additionally, the application uses JSON Web Tokens (JWT) for user authentication.
 
+## Características
 
-## Caracteristicas
+* Autenticación de usuarios (registro, inicio de sesión, eliminación).
+* Manejo de bases de datos con MongoDB.
+* Validación de entradas utilizando `express-validator`.
+* Cifrado de contraseñas con `bcrypt`.
+* Implementación de autenticación con JWT.
+* Diseño responsive para uso en cualquier dispositivo.
 
-*
-* 
-* 
-* Responsive desing for use on any device
-
-## Technologies used
+## Tecnologías usadas
 
 ### Frontend
-    * React Vainilla
-    * vite
-    * Sass
-    * Bootstrap
-    * Javascript
+* React Vanilla
+* Vite
+* Sass
+* Bootstrap
+* JavaScript
 
 ### Backend
-    * Node
-    * express
-    * JWT
-    * MongoDB
-    * ODM: Mongoose
+* Node.js
+* Express
+* JWT (JSON Web Tokens)
+* MongoDB
+* ODM: Mongoose
 
+## Deploy
 
+### Frontend:
+* (Agregar información del deploy del frontend)
 
-
-DEPLOY
-
-fronted:
-
-backend: 
+### Backend:
+* (Agregar información del deploy del backend)

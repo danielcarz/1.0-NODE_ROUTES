@@ -179,9 +179,69 @@ const updateEventByID = async ( req, res ) => {
 }
 
 //delete event by id
-const deleteEventByID = ( req, res ) => {
+const deleteEventByID = async ( req, res ) => {
 
-    res.json( { mjs: 'deleteEvents' } );
+    //GET DATA
+    const idEvent = req.params.id;
+    const idUser = req.uid;
+
+    console.log('idEvent', idEvent)
+    console.log('idUser', idUser)
+
+    try {  
+        
+        //SERACHING IF EXIST THE EVENT 
+        const event = await EventsSchema.findById( idEvent );
+
+        console.log( 'event: ', event );
+
+        const idUserEvent  = event.user.toString();
+        const idEventFromDB = event._id.toString();
+
+        console.log(' idEvent db: ', idEventFromDB);
+
+        //VALIDATION IF THE USER EXISTS
+        if( idUser  !== idUserEvent ){
+            
+            res.status(400).json( {
+
+                ok: false,
+                mjs: "El usuario no tiene permisos para eliminar el evento"
+            } )
+
+        }
+
+        //VALIDATION IF THE EVENT EXIST
+        if( idEvent !== idEventFromDB ){
+
+            res.status(401).json( {
+
+                ok:false,
+                mjs:"No existe evento con el id ingresado"
+
+            } )
+
+        }
+
+        //DELETE EVENT
+        const deleteEvent = await EventsSchema.findByIdAndDelete( idEvent );
+
+        res.status(200).json({
+            
+            ok:true,
+            mjs: "El evento ha sido eliminado",
+            deleteEvent
+             
+        })
+        
+    } catch (error) {
+        
+        res.status(500).json( {
+            ok: false,
+            mjs: "Accion denegada (DELETE), por favor hable con el administrador"
+
+        } )
+    }
 }
 
 //delete all events
